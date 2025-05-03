@@ -1,77 +1,66 @@
 import Button from "./Button";
+import Option from "./Option";
+
 function Generator() {
   return (
-    <section className="w-full border-3 border-black bg-white rounded-[20px] lg:w-[50%] xl:w-[35%]  ">
-      <div className="p-[30px]  flex flex-col items-center">
-        <div className="w-[90%] min-h-[40px] border-[2px] border-black rounded-[10px] text-center relative p-[5px] break-words ">
+    <section className="w-full border-3 border-black bg-white rounded-[20px] lg:w-[50%] xl:w-[35%]">
+      <div className="p-[20px] md:p-[30px] flex flex-col items-center w-full">
+        <div className="w-[90%] min-h-[40px] border-[2px] border-black rounded-[10px] text-center relative p-[5px] break-words">
           <p className="result"></p>
 
           <div className="bg-[#DCDCDC] h-[6px] w-[99%] absolute bottom-0 left-[2px] rounded-[10px]">
-            <div className=" h-full bg-[#97b002]"></div>
+            <div className="h-full bg-[#97b002]"></div>
           </div>
         </div>
 
         <div>
-          <h2 className="pt-[20px] font-bold text-2xl">
+          <h2 className="text-[20px] text-center font-bold pt-[10px] md:pt-[20px] xl:text-2xl">
             Customise your new password
           </h2>
 
-          <form className="flex flex-col p-[25px]">
-            <div className="flex justify-between">
-              <label htmlFor="length">Length</label>
-              <div className="psw__range">
-                <input
-                  className="range-custom w-[150px] mr-[5px] overflow-hidden bg-[#ebeddf]"
-                  type="range"
-                  name="length"
-                  id="length"
-                  min="5"
-                  max="50"
-                  value="0"
-                />
-                <output>5</output>
-              </div>
-            </div>
-            <div className="flex justify-between">
-              <label htmlFor="uppercase">A-Z</label>
-              <input
-                className="accent-[#97b002] checkbox__uppercase"
-                type="checkbox"
-                name="uppercase"
-                id="uppercase"
-                checked
-              />
-            </div>
-            <div className="flex justify-between">
-              <label htmlFor="lowercase">a-z</label>
-              <input
-                className="checkbox__lowercase accent-[#97b002] checkbox"
-                type="checkbox"
-                name="lowercase"
-                id="lowercase"
-                checked
-              />
-            </div>
-            <div className="flex justify-between">
-              <label htmlFor="number">0-9</label>
-              <input
-                className="checkbox__number accent-[#97b002]"
-                type="checkbox"
-                name="number"
-                id="number"
-                checked
-              />
-            </div>
-            <div className="flex justify-between">
-              <label htmlFor="punctuation">!@#^&*</label>
-              <input
-                className="checkbox__punctuation accent-[#97b002]"
-                type="checkbox"
-                name="punctuation"
-                id="punctuation"
-                checked
-              />
-            </div>
+          <form className="w-[250px] px-[10px] py-[20px] flex flex-col md:w-[320px]">
+            <Option
+              label="Length"
+              type="range"
+              name="length"
+              id="length"
+              min={5}
+              max={50}
+              value={13}
+              onChange={(e) => console.log(e.target.value)}
+            />
+            <Option
+              label="A-Z"
+              type="checkbox"
+              name="uppercase"
+              id="uppercase"
+              checked={true}
+              onChange={(e) => console.log(e.target.checked)}
+            />
+            <Option
+              label="a-z"
+              type="checkbox"
+              name="lowercase"
+              id="lowercase"
+              checked={true}
+              onChange={(e) => console.log(e.target.checked)}
+            />
+            <Option
+              label="0-9"
+              type="checkbox"
+              name="number"
+              id="number"
+              checked={true}
+              onChange={(e) => console.log(e.target.checked)}
+            />
+            <Option
+              label="!@#^&*"
+              type="checkbox"
+              name="punctuation"
+              id="punctuation"
+              checked={true}
+              onChange={(e) => console.log(e.target.checked)}
+            />
           </form>
         </div>
         <Button
