@@ -2,7 +2,7 @@ import { JSX, useState } from "react";
 
 export default function Header(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
-  const menuItem: string[] = ["Home", "About", "Blog", "Business", "Contact"];
+  const menuItem = ["Home", "About", "Blog", "Business", "Contact"] as const;
   const menuBtnStyle: string =
     "block md:hidden absolute right-5 top-5 w-[40px] cursor-pointer";
 
