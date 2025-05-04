@@ -1,6 +1,8 @@
 import Button from "./Button";
 import Option from "./Option";
 import { useState } from "react";
+import HistoryContainer from "./HistoryContainer";
+import Result from "./Result";
 
 function Generator() {
   const [length, setLength] = useState(5);
@@ -11,8 +13,16 @@ function Generator() {
   const [result, setResult] = useState("");
   const [strengthBar, setStrengthBar] = useState(0);
   const [bgColor, setBgColor] = useState("red");
+  const [history, setHistory] = useState<string[]>([]);
+  const [showHistory, setShowHistory] = useState(false);
 
   const passwordGen = function (): string | undefined {
+    if (history.length >= 10) {
+      alert(
+        "You have reached the maximum history limit of 10 passwords. Please clear the history to generate new ones."
+      );
+      return; // Stop further execution
+    }
     const data = {
       specials: "!@#$%^&*()_+{}:<>?|[];',./`~",
       lowercase: "abcdefghijklmnopqrstuvwxyz",
@@ -56,6 +66,7 @@ function Generator() {
 
     password = pswCharacter.sort(() => Math.random() - 0.5).join("");
     setResult(String(password));
+    setHistory((prev) => [...prev, password]);
 
     const strengthTester = function () {
       if (password.length <= 10) {
@@ -72,27 +83,28 @@ function Generator() {
       }
     };
     strengthTester();
+    if (history.length === 10)
+      alert(
+        "You have reached the maximum history limit of 10 passwords. Please clear the history to generate new ones."
+      );
+    return;
   };
 
+  function handleReset() {
+    setHistory([]);
+    setShowHistory(false);
+    setResult("");
+    setStrengthBar(0);
+  }
+
   return (
-    <section className="w-full border-3 border-black bg-white rounded-[20px] lg:w-[50%] xl:w-[35%]">
+    <section className="w-full border-3 border-black bg-white rounded-[20px] lg:w-[50%] 2xl:w-[35%]">
       <div className="p-[20px] md:p-[30px] flex flex-col items-center w-full">
-        <div className="w-[90%] min-h-[40px] border-[2px] border-black rounded-[10px] text-center relative p-[5px] break-words">
-          <p className="result">{result}</p>
-
-          <div className="bg-[#DCDCDC] h-[6px] w-[99%] absolute bottom-0 left-[2px] rounded-[10px]">
-            <div
-              className="h-full bg-[#97b002]"
-              style={{ width: `${strengthBar}%`, backgroundColor: bgColor }}
-            ></div>
-          </div>
-        </div>
-
+        <Result result={result} strengthBar={strengthBar} bgColor={bgColor} />
         <div>
           <h2 className="text-[20px] text-center font-bold pt-[10px] md:pt-[20px] xl:text-2xl">
             Customise your new password
           </h2>
-
           <form className="w-[250px] px-[10px] py-[20px] flex flex-col md:w-[320px]">
             <Option
               label="Length"
@@ -153,19 +165,12 @@ function Generator() {
           * Value must be between 8 and 50. Use 14 characters or more to
           generate a strong password.
         </div>
-        <div className="flex flex-col justify-start relative">
-          <Button
-            width="260px"
-            height="40px"
-            bgColor="#ebeddf"
-            textColor="#000"
-            hoverBgColor="#dcdcdc"
-            hoverTextColor="#000"
-          >
-            Check your history here 👇
-          </Button>
-          <ul className="histroy__list history__hidden"></ul>
-        </div>
+        <HistoryContainer
+          history={history}
+          showHistory={showHistory}
+          setShowHistory={setShowHistory}
+          handleReset={handleReset}
+        />
       </div>
     </section>
   );
