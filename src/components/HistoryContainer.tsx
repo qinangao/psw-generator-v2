@@ -15,7 +15,7 @@ function HistoryContainer({
 }: HistoryContainerProps) {
   return (
     <div className="flex flex-col justify-start relative">
-      <div className="flex justify-center items-center gap-[30px] mt-[20px]">
+      <div className="flex flex-col items-center justify-center gap-[20px] mt-[20px] md:flex-row ">
         <Button
           width="250px"
           height="30px"
@@ -33,7 +33,7 @@ function HistoryContainer({
       </div>
 
       <div
-        className="flex flex-col items-center justify-center p-[10px] border-[2px] border-black absolute rounded-[30px] top-[60px] w-full bg-[#e1e587] "
+        className="flex flex-col items-center justify-center p-[10px] border-[2px] border-black absolute rounded-[30px] top-[110px] w-full bg-[#e1e587] md:top-[60px] "
         style={{ display: showHistory ? "block" : "none" }}
       >
         {history.length === 0 ? (
