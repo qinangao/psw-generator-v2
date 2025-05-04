@@ -40,7 +40,10 @@ export default function Header(): JSX.Element {
         <div className="md:static md:flex md:justify-center">
           <ul className={ulStyle}>
             {menuItem.map((item) => (
-              <li className="my-[10px] md:my-0 transition-transform transform hover:scale-[1.3] cursor-pointer">
+              <li
+                key={item}
+                className="my-[10px] md:my-0 transition-transform transform hover:scale-[1.3] cursor-pointer"
+              >
                 {item}
               </li>
             ))}
