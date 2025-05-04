@@ -17,13 +17,6 @@
     appearance: none;
   }
 
-  .range-custom::-webkit-slider-runnable-track {
-    height: 10px;
-    -webkit-appearance: none;
-    color: #13bba4;
-    margin-top: -1px;
-  }
-
   .range-custom::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 10px;
