@@ -1,5 +1,5 @@
 import Description from "./Description";
-import Generator from "./Generator";
+import Generator from "./GeneratorApp";
 
 function Main() {
   return (
