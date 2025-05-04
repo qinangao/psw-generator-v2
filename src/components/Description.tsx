@@ -1,6 +1,6 @@
 function Description() {
   return (
-    <section className="w-full md:w-[60%] lg:w-[40%]">
+    <section className="w-full  lg:w-[40%]">
       <h1 className="text-[30px] lg:text-[40px]/[60px] pb-[40px] font-bold">
         Lock Down Your
         <span>Security</span>
