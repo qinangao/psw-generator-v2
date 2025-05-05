@@ -57,6 +57,12 @@ function Description() {
         )}
         {activeModal === "login" && <SigninModal onClose={handleCloseModal} />}
       </div>
+      {activeModal && (
+        <div
+          className="fixed bg-black w-full h-full top-0 left-0 z-10 opacity-50"
+          onClick={handleCloseModal}
+        ></div>
+      )}
     </section>
   );
 }
