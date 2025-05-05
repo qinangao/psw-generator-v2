@@ -37,11 +37,11 @@ function Modal({
             className="border border-gray-300 rounded p-2"
           />
         )}
-        <div className="flex justify-between mt-4">
-          <Button>{buttontext1}</Button>
+        <div className="flex justify-end mt-4 gap-[20px]">
           <Button bgColor="#ebeddf" textColor="#97b002" onClick={onClose}>
             Cancel
           </Button>
+          <Button>{buttontext1}</Button>
         </div>
       </form>
     </div>
