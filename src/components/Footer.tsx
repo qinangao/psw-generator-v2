@@ -10,7 +10,7 @@ function Footer() {
 
   const footerMenu = ["Home", "About", "Blog", "Business", "Contact"];
   return (
-    <footer className="bg-[#97B002] flex flex-col text-center gap-[30px] lg:flex-row lg:text-left items-center justify-between py-10 px-20">
+    <footer className="bg-[#97B002] flex items-center flex-col text-center gap-[30px] lg:flex-row lg:text-left lg:items-start justify-between py-10 px-20">
       <div className="contact__container">
         <p className="py-[20px] text-2xl">Contact us</p>
         <div className="flex items-center justify-center gap-[20px]">
