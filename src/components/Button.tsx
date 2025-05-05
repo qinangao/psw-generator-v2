@@ -1,4 +1,4 @@
-interface ButtonProps {
+type ButtonProps = {
   children: React.ReactNode;
   fontSize?: string;
   width?: string;
@@ -9,7 +9,7 @@ interface ButtonProps {
   hoverTextColor?: string;
   isHover?: boolean; // Optional hover effect
   onClick?: () => void;
-}
+};
 
 function Button({
   children,
